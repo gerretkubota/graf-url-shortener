@@ -82,7 +82,7 @@ function homeCtrl(req, res, next){
 app.get('/', (req, res) => {
   // res.send('Harrooooooo');
   console.log(__dirname);
-  res.render('index', {sameLink: sameLink, link: tempNewLink});
+  res.render('index', {sameLink: app.get('sameLink'), link: app.get('link')});
 });
 
 
@@ -199,7 +199,10 @@ app.post('/generate', (req, res) => {
         // res.send('short url: ' + shortLink.newURL);
         var sameLink = url;
         var link = shortLink.newURL;
-        res.render('index', {sameLink: sameLink, link: link});
+        app.set('sameLink', url);
+        app.set('link', link);
+        // res.render('index', {sameLink: sameLink, link: link});
+        res.redirect('/');
       });
       // res.redirect('/');
     }
