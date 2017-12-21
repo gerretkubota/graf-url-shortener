@@ -82,7 +82,7 @@ function homeCtrl(req, res, next){
 app.get('/', (req, res) => {
   // res.send('Harrooooooo');
   console.log(__dirname);
-  res.render('index', {sameLink: sameLink, link: tempNewLink});
+  res.render('index', {sameLink: "", link: ""});
 });
 
 
