@@ -134,9 +134,9 @@ app.post('/generate', (req, res) => {
         // res.send('short url: ' + shortLink.newURL);
         sameLink = url;
         link = shortLink.newURL;
-        // res.render('index', {sameLink: req.headers.origin, link: shortLink.newURL});
-        res.redirect('/');
+        res.render('index', {sameLink: mainURL, link: shortLink.newURL});
       });
+      res.redirect('/');
     }
   });
 });
