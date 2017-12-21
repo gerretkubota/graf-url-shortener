@@ -197,11 +197,11 @@ app.post('/generate', (req, res) => {
           console.log(err);
         }
         // res.send('short url: ' + shortLink.newURL);
-        sameLink = url;
-        tempNewLink = shortLink.newURL;
+        var sameLink2 = url;
+        var tempNewLink2 = shortLink.newURL;
         // app.set('sameLink', url);
         // app.set('link', link);
-        res.render('index', {sameLink: sameLink, link: link});
+        res.render('index', {sameLink: sameLink2, link: link2});
         // res.redirect('/');
       });
       // res.redirect('/');
