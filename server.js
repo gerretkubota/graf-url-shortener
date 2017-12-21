@@ -72,7 +72,7 @@ function checkDup(idValue){
 var sameLink = "";
 var tempNewLink = "";
 
-homeCtrl(req, res) => {
+function homeCtrl(req, res){
   sameLink = req.sameLink;
   tempNewLink = req.tempNewLink;
   res.render('index', {sameLink: sameLink, link: tempNewLink});
@@ -99,7 +99,7 @@ app.get('/:key', (req, res) => {
   });
 });
 
-generateCtrl(req, res, next) => {
+function generateCtrl(req, res, next){
   var url = req.body.originURL;
   var hashString = '';
   var numberID = 0;
