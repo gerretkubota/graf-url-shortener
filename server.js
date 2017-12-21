@@ -97,7 +97,7 @@ app.post('/generate', (req, res) => {
   var hashString = '';
   var numberID = 0;
 
-  console.log(req.body.originURL);
+  console.log("generate spot: " + req.body.originURL);
   // generate a random number between 100 to 500 mill
   rand = Math.floor(Math.random() * 500000000) + 100;
 
