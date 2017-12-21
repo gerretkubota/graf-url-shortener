@@ -130,7 +130,7 @@ app.post('/generate', (req, res) => {
           console.log(err);
         }
         // res.send('short url: ' + shortLink.newURL);
-        sameLink = req.headers.origin;
+        sameLink = url;
         link = shortLink.newURL;
         // res.render('index', {sameLink: req.headers.origin, link: shortLink.newURL});
         res.redirect('/');
