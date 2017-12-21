@@ -5,7 +5,7 @@ $('#button').on('click', function(){
     dataType: 'JSON',
     data: {url: $('#original').val()},
     success: function(data){
-      $('input[type=text]#shortened').val(data.newURL);
+      $('#shortened').val(data.newURL);
     }
   });
 });
