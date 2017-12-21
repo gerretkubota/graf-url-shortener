@@ -82,7 +82,7 @@ function homeCtrl(req, res, next){
 app.get('/', (req, res) => {
   // res.send('Harrooooooo');
   console.log(__dirname);
-  res.render('index', {sameLink: app.get('sameLink'), link: app.get('link')});
+  res.render('index', {sameLink: sameLink, link: tempNewLink});
 });
 
 
@@ -197,12 +197,12 @@ app.post('/generate', (req, res) => {
           console.log(err);
         }
         // res.send('short url: ' + shortLink.newURL);
-        var sameLink = url;
-        var link = shortLink.newURL;
-        app.set('sameLink', url);
-        app.set('link', link);
-        // res.render('index', {sameLink: sameLink, link: link});
-        res.redirect('/');
+        sameLink = url;
+        tempNewLink = shortLink.newURL;
+        // app.set('sameLink', url);
+        // app.set('link', link);
+        res.render('index', {sameLink: sameLink, link: link});
+        // res.redirect('/');
       });
       // res.redirect('/');
     }
