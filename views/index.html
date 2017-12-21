@@ -16,25 +16,23 @@
         <div id="trimContainer">
           <h1>Short any URL in less than a second.</h1>
           <p>Make it easier to send and embed links.</p>
-          <form action="/generate" method="POST">
-            <div>
-              <label class="tfLabel" for="original">Link</label></br>
-              <input class="textFields" id="original" type="text" placeholder='Type in or paste link here'
-                onfocus="this.placeholder=''"
-                onblur="this.placeholder='Type in or paste link here'"
-                name="originURL"/>
-              </br>
-            </div>
-            <!-- </br> -->
-            <div class="changeStatus">
-              <label class="tfLabel" for="shortened">Shortened URL</label></br>
-              <input class="textFields" id="shortened" type="text" name="shortenedURL" disabled/></br>
-            </div>
-            <div class="buttonContainer">
-              <!-- <a id="button" href="/generate">Shorten URL</a> -->
-              <button id="button" type="submit">SHORTEN URL</button>
-            </div>
-          </form><!-- end of form -->
+          <div>
+            <label class="tfLabel" for="original">Link</label></br>
+            <input class="textFields" id="original" type="text" placeholder='Type in or paste link here'
+              onfocus="this.placeholder=''"
+              onblur="this.placeholder='Type in or paste link here'"
+              name="originURL"/>
+            </br>
+          </div>
+          <!-- </br> -->
+          <div class="changeStatus">
+            <label class="tfLabel" for="shortened">Shortened URL</label></br>
+            <input class="textFields" id="shortened" type="text" name="shortenedURL" disabled/></br>
+          </div>
+          <div class="buttonContainer">
+            <!-- <a id="button" href="/generate">Shorten URL</a> -->
+            <button id="button" type="submit">SHORTEN URL</button>
+          </div>
         </div><!-- end of trimContainer -->
       </div><!-- end of innerContainer -->
     </div><!--end of container -->
