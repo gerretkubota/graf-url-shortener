@@ -72,7 +72,7 @@ function checkDup(idValue){
 var sameLink = "";
 var tempNewLink = "";
 
-function homeCtrl(req, res){
+function homeCtrl(req, res, next){
   sameLink = req.sameLink;
   tempNewLink = req.tempNewLink;
   res.render('index', {sameLink: sameLink, link: tempNewLink});
@@ -145,7 +145,7 @@ function generateCtrl(req, res, next){
         tempNewlink = shortLink.newURL;
         req.sameLink = sameLink
         req.tempNewLink = tempNewLink
-        return next();
+        return homeCtrl(req, res, next);
         // return next();
         // res.render('index', {sameLink: mainURL, link: link});
       });
