@@ -119,7 +119,10 @@ function generateCtrl(req, res, next){
       hashString = shortenIt.shorterURL.wrapIt(numberID);
       sameLink = url;
       tempNewLink = stuff.newURL;
-      res.redirect('/');
+      // res.redirect('/')
+      req.sameLink = url;
+      req.tempNewLink = stuff.newUL;
+      return next();
       // res.render('index', {sameLink: url, link: stuff.newURL})
     }
     else{
