@@ -210,7 +210,7 @@ app.post('/generate', (req, res) => {
         // res.redirect('/');
         generatedURL = mainURL + '/' + shortenIt.shorterURL.wrapIt(shortLink.id);
         res.send({'newURL': generatedURL});
-        res.end();
+
       });
       // res.redirect('/');
     }
