@@ -182,7 +182,7 @@ app.post('/generate', (req, res) => {
       hashString = shortenIt.shorterURL.wrapIt(numberID);
       sameLink = url;
       tempNewLink = stuff.newURL;
-      generatedURL = mainURL + '/' + shortenIt.shorterURL.unwrapIt(stuff.id);
+      generatedURL = mainURL + '/' + shortenIt.shorterURL.wrapIt(stuff.id);
       res.send({'newURL': generatedURL});
       // res.render('index', {sameLink: url, link: stuff.newURL})
     }
