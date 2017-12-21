@@ -72,11 +72,18 @@ function checkDup(idValue){
 var sameLink = "";
 var tempNewLink = "";
 
-app.get('/', (req, res) => {
+homeCtrl(req, res) => {
+  sameLink = req.sameLink;
+  tempNewLink = req.tempNewLink;
+  res.render('index', {sameLink: sameLink, link: tempNewLink});
+}
+
+
+app.get('/', homeCtrl);/* => {
   // res.send('Harrooooooo');
   console.log(__dirname);
   res.render('index', {sameLink: sameLink, link: tempNewLink});
-});
+});*/
 
 
 app.get('/:key', (req, res) => {
@@ -92,8 +99,7 @@ app.get('/:key', (req, res) => {
   });
 });
 
-
-app.post('/generate', (req, res) => {
+generateCtrl(req, res, next) => {
   var url = req.body.originURL;
   var hashString = '';
   var numberID = 0;
@@ -133,10 +139,63 @@ app.post('/generate', (req, res) => {
         }
         // res.send('short url: ' + shortLink.newURL);
         sameLink = url;
-        link = shortLink.newURL;
-        res.render('index', {sameLink: mainURL, link: link});
+        tempNewlink = shortLink.newURL;
+        req.sameLink = sameLink
+        req.tempNewLink = tempNewLink
+        // res.render('index', {sameLink: mainURL, link: link});
       });
       // res.redirect('/');
     }
   });
-});
+  // req.sameLink =
+}
+
+app.post('/generate', generateCtrl, homeCtrl);
+
+// app.post('/generate', (req, res) => {
+//   var url = req.body.originURL;
+//   var hashString = '';
+//   var numberID = 0;
+//
+//   console.log("generate spot: " + req.body.originURL);
+//   // generate a random number between 100 to 500 mill
+//   rand = Math.floor(Math.random() * 500000000) + 100;
+//
+//   // keep looping until the rand doesn't exist
+//   while(checkDup(rand)){
+//     rand = Math.floor(Math.random() * 500000000) + 100;
+//   }
+//
+//   ShortLinks.findOne({url: url}, (err, stuff) => {
+//     if(stuff){
+//       numberID = stuff.id;
+//       hashString = shortenIt.shorterURL.wrapIt(numberID);
+//       sameLink = url;
+//       tempNewLink = stuff.newURL;
+//       res.redirect('/');
+//       // res.render('index', {sameLink: url, link: stuff.newURL})
+//     }
+//     else{
+//       console.log("if it doesn't exist: " + rand + " ");
+//       hashString = shortenIt.shorterURL.wrapIt(rand);
+//
+//       var shortLink = new ShortLinks({
+//         url: url,
+//         id: rand,
+//         hashString: hashString,
+//         newURL: mainURL + '/' + hashString
+//       });
+//
+//       shortLink.save((err) =>{
+//         if(err){
+//           console.log(err);
+//         }
+//         // res.send('short url: ' + shortLink.newURL);
+//         sameLink = url;
+//         link = shortLink.newURL;
+//         res.render('index', {sameLink: mainURL, link: link});
+//       });
+//       // res.redirect('/');
+//     }
+//   });
+// });
