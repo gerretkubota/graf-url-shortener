@@ -122,7 +122,7 @@ function generateCtrl(req, res, next){
       // res.redirect('/')
       req.sameLink = url;
       req.tempNewLink = stuff.newUL;
-      return next();
+      return homeCtrl(req, res, next);
       // res.render('index', {sameLink: url, link: stuff.newURL})
     }
     else{
