@@ -26,7 +26,7 @@ app.set('port', (process.env.PORT || 3000));
 // for mongodb
 // const MongoClient = require('mongodb').MongoClient;
 
-
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // 'global' variable for database when connected to mongoDB
