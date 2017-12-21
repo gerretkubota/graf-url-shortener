@@ -197,9 +197,9 @@ app.post('/generate', (req, res) => {
           console.log(err);
         }
         // res.send('short url: ' + shortLink.newURL);
-        sameLink = url;
-        link = shortLink.newURL;
-        res.render('index', {sameLink: mainURL, link: link});
+        var sameLink = url;
+        var link = shortLink.newURL;
+        res.render('index', {sameLink: sameLink, link: link});
       });
       // res.redirect('/');
     }
