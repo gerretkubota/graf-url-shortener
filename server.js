@@ -142,11 +142,12 @@ function generateCtrl(req, res, next){
         tempNewlink = shortLink.newURL;
         req.sameLink = sameLink
         req.tempNewLink = tempNewLink
+        return next();
         // return next();
         // res.render('index', {sameLink: mainURL, link: link});
       });
       // res.redirect('/');
-      return next();
+
     }
   });
   // req.sameLink =
