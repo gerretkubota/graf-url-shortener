@@ -122,7 +122,7 @@ app.post('/generate', (req, res) => {
         url: url,
         id: rand,
         hashString: hashString,
-        newURL: req.headers.origin + '/' + hashString
+        newURL: mainURL + '/' + hashString
       });
 
       shortLink.save((err) =>{
