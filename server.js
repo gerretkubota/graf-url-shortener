@@ -8,13 +8,15 @@ var mainURL = 'https://graf-url-shortener.herokuapp.com';
 //var refresh = require('./checkRefresh.js');
 var isUrl = require('is-url');
 
+var path = require('path');
+
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
 // looks for the ejs files in the views directory
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
+// app.set('view engine', 'ejs');
+// app.set('views', __dirname + '/views');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -72,17 +74,18 @@ function checkDup(idValue){
 var sameLink = "";
 var tempNewLink = "";
 
-function homeCtrl(req, res, next){
-  sameLink = req.sameLink;
-  tempNewLink = req.tempNewLink;
-  res.render('index', {sameLink: sameLink, link: tempNewLink});
-}
+// function homeCtrl(req, res, next){
+//   sameLink = req.sameLink;
+//   tempNewLink = req.tempNewLink;
+//   res.render('index', {sameLink: sameLink, link: tempNewLink});
+// }
 
 
 app.get('/', (req, res) => {
   // res.send('Harrooooooo');
   console.log(__dirname);
-  res.render('index', {sameLink: sameLink, link: tempNewLink});
+  // res.render('index', {sameLink: sameLink, link: tempNewLink});
+  res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
 
@@ -178,7 +181,7 @@ app.post('/generate', (req, res) => {
       hashString = shortenIt.shorterURL.wrapIt(numberID);
       sameLink = url;
       tempNewLink = stuff.newURL;
-      res.redirect('/');
+      res.send({'newURL': stuff.newURL})
       // res.render('index', {sameLink: url, link: stuff.newURL})
     }
     else{
@@ -201,8 +204,9 @@ app.post('/generate', (req, res) => {
         var tempNewLink2 = shortLink.newURL;
         // app.set('sameLink', url);
         // app.set('link', link);
-        res.render('index', {sameLink: sameLink2, link: link2});
+        // res.render('index', {sameLink: sameLink2, link: link2});
         // res.redirect('/');
+        res.send({'newURL': shortLink.newURL});
       });
       // res.redirect('/');
     }

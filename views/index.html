@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='assets/css/main.css'/>
+    <link rel='stylesheet' href='css/main.css'/>
     <title>Trim Links</title>
   </head>
   <body>
@@ -22,7 +22,7 @@
               <input class="textFields" id="original" type="text" placeholder='Type in or paste link here'
                 onfocus="this.placeholder=''"
                 onblur="this.placeholder='Type in or paste link here'"
-                name="originalURL"/>
+                name="originURL"/>
               </br>
             </div>
             <!-- </br> -->
@@ -32,7 +32,7 @@
             </div>
             <div class="buttonContainer">
               <!-- <a id="button" href="/generate">Shorten URL</a> -->
-              <button type="submit">SHORTEN URL</button>
+              <button id="button" type="submit">SHORTEN URL</button>
             </div>
           </form><!-- end of form -->
         </div><!-- end of trimContainer -->
@@ -42,5 +42,7 @@
     <footer>
       <a>+1 424 829 3749</a>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="public/js/generateShort.js"></script>
   </body>
 </html>
