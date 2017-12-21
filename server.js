@@ -162,9 +162,10 @@ app.get('/:key', (req, res) => {
 // app.post('/generate', generateCtrl, homeCtrl);
 
 app.post('/generate', (req, res) => {
-  var url = req.body.originURL;
+  var url = req.body.url;
   var hashString = '';
   var numberID = 0;
+  var generatedURL = '';
 
   console.log("generate spot: " + req.body.originURL);
   // generate a random number between 100 to 500 mill
@@ -181,7 +182,8 @@ app.post('/generate', (req, res) => {
       hashString = shortenIt.shorterURL.wrapIt(numberID);
       sameLink = url;
       tempNewLink = stuff.newURL;
-      res.send({'newURL': stuff.newURL})
+      generatedURL = mainURL + '/' + shortenIt.shorterURL.unwrapIt(stuff.id);
+      res.send({'newURL': generatedURL});
       // res.render('index', {sameLink: url, link: stuff.newURL})
     }
     else{
