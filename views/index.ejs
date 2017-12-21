@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='css/main.css'/>
+    <title>Trim Links</title>
+  </head>
+  <body>
+    <!-- trim logo should be here -->
+    <!-- <header class="smallLogo"></header> -->
+    <!-- shrinking link form should be here -->
+    <div id='container'>
+      <div id="innerContainer">
+        <img src='images/Logo.png' alt='Logo'></img>
+        <div id="trimContainer">
+          <h1>Short any URL in less than a second.</h1>
+          <p>Make it easier to send and embed links.</p>
+          <form action="/generate" method="POST">
+            <div>
+              <label class="tfLabel" for="original">Link</label></br>
+              <input class="textFields" id="original" type="text" placeholder='Type in or paste link here'
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='Type in or paste link here'"
+                name="originURL"
+                value="<%= sameLink %>"
+                />
+              </br>
+            </div>
+            <!-- </br> -->
+            <div class="changeStatus">
+              <label class="tfLabel" for="shortened">Shortened URL</label></br>
+              <input class="textFields" id="shortened" type="text" name="shortenedURL" value="<%= link %>" disabled/></br>
+            </div>
+            <div class="buttonContainer">
+              <!-- <a id="button" href="/generate">Shorten URL</a> -->
+              <button type="submit">SHORTEN URL</button>
+            </div>
+          </form><!-- end of form -->
+        </div><!-- end of trimContainer -->
+      </div><!-- end of innerContainer -->
+    </div><!--end of container -->
+    <!-- phone number, email, and copyright info here -->
+    <footer>
+      <a>+1 424 829 3749</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+@font-face{
+  font-family: 'SF-UI-Display-Bold';
+  src: url('../fonts/SF-UI-Display-Bold.otf');
+}
+
+@font-face{
+  font-family: 'SF-UI-Display-Regular';
+  src: url('../fonts/SF-UI-Display-Regular.otf');
+}
+
+header,footer,section{
+  display: block;
+}
+
+html,body{
+  /* height: 100%; */
+}
+
+body{
+  background-color: #c9c9c9;
+  font-family: 'SF-UI-Display-Regular';
+}
+
+#trimContainer{
+  background-color: #fff;
+  height: 350px;
+  width: 380px;
+  /* text-align: center; */
+  padding: 30px 25px 10px 25px;
+  /* padding:30px; */
+}
+
+#trimContainer div{
+  padding-bottom: 20px;
+}
+
+#trimContainer h1{
+  font-family: 'SF-UI-Display-Bold';
+}
+
+#trimContainer p, #button{
+  font-size: 22px;
+}
+
+.tfLabel{
+  font-family: 'SF-UI-Display-Bold';
+  font-size: 10px;
+  line-height: 2.5;
+}
+
+.textFields{
+  font-family: 'SF-UI-Display-Regular';
+  caret-color: blue;
+  line-height: .5;
+  /* fixes textfield overlap of content */
+  box-sizing: border-box;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #000;
+  font-size: 16px;
+  width: 100%;
+}
+
+.textFields:focus{
+  outline:none;
+  border-bottom-color: blue;
+}
+
+.changeStatus{
+  color: #c9c9c9;
+}
+
+.changeStatus input{
+  border-bottom-color: #c9c9c9;
+}
+
+::placeholder{
+  color: #c9c9c9;
+}
+
+#button{
+  display: block;
+  text-align: center;
+  color: blue;
+  padding-top: 10px;
+  /* margin: 0 auto; */
+}
+ /*body{
+  /* display: block; */
+  /* background: url('../../images/Background Image.png'); */
+
+
+  /* height: 100%; */
+  /* width: 100%; */
+  /* background-size: 100% 100%; */
+  /* background-size: cover; */
+
+  /* background-position: center;
+  background-repeat: no-repeat; */
+
+  /* padding: 0;
+  margin: 0; */
+  /* this one works kinda */
+  /*background: url('../../images/Background Image.png') no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  width: auto;
+  background-position: center;
+  background-size: cover;
+
+} */
+
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #000;
+  color: #fff;
+}
