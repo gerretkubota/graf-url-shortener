@@ -25,7 +25,7 @@ app.set('port', (process.env.PORT || 3000));
 // const MongoClient = require('mongodb').MongoClient;
 
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // 'global' variable for database when connected to mongoDB
 // var mongoURL ='mongodb://gerret:short123@ds161016.mlab.com:61016/shortlinks';
@@ -63,6 +63,7 @@ function checkDup(idValue){
       return true;
     }
     else{
+      console.log(err);
       return false;
     }
   });
@@ -116,6 +117,7 @@ app.post('/generate', (req, res) => {
       // res.render('index', {sameLink: url, link: stuff.newURL})
     }
     else{
+      console.log("if it doesn't exist: " + rand + " ");
       hashString = shortenIt.shorterURL.wrapIt(rand);
 
       var shortLink = new ShortLinks({
