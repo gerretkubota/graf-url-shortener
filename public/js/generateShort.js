@@ -11,7 +11,8 @@ $('#button').on('click', function(){
       $('input[type=text]#shortened').val(data.newURL)
                                      .prop('disabled', false)
                                      .prop('readonly', true)
-                                     .select();
+                                     .select()
+                                     .css("color", "#000");
 
     }
   });
