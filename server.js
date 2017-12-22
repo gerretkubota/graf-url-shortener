@@ -1,37 +1,27 @@
 // initializing express from dependencies
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 var shortenIt = require('./shortenIt.js');
-
 var mainURL = 'https://graf-url-shortener.herokuapp.com';
 //var refresh = require('./checkRefresh.js');
 var isUrl = require('is-url');
-
 var path = require('path');
-
-const bodyParser = require('body-parser');
-
-const mongoose = require('mongoose');
 
 // looks for the ejs files in the views directory
 // app.set('view engine', 'ejs');
 // app.set('views', __dirname + '/views');
 
 app.use(express.static(__dirname + '/public'));
-
 // setting environment for local/heroku
 app.set('port', (process.env.PORT || 3000));
-
-// for mongodb
-// const MongoClient = require('mongodb').MongoClient;
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // 'global' variable for database when connected to mongoDB
-// var mongoURL ='mongodb://gerret:short123@ds161016.mlab.com:61016/shortlinks';
-
+// mask db info
 var mongoURL = process.env.MONGOLAB_URI;
 
 var db;
@@ -47,6 +37,10 @@ mongoose.connect(mongoURL,
                       });
                     });
 // make url model schema
+// store original url
+// store the id generated
+// store calculated hash
+// store new generated url
 var urlSchema = new mongoose.Schema({
   url: String,
   // hashNum: Number,
@@ -71,23 +65,12 @@ function checkDup(idValue){
   });
 }
 
-var sameLink = "";
-var tempNewLink = "";
-
-// function homeCtrl(req, res, next){
-//   sameLink = req.sameLink;
-//   tempNewLink = req.tempNewLink;
-//   res.render('index', {sameLink: sameLink, link: tempNewLink});
-// }
-
-
 app.get('/', (req, res) => {
   // res.send('Harrooooooo');
   console.log(__dirname);
   // res.render('index', {sameLink: sameLink, link: tempNewLink});
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
-
 
 app.get('/:key', (req, res) => {
   var hashedID = req.params.key;
@@ -101,65 +84,6 @@ app.get('/:key', (req, res) => {
     }
   });
 });
-
-// function generateCtrl(req, res, next){
-//   var url = req.body.originURL;
-//   var hashString = '';
-//   var numberID = 0;
-//
-//   console.log("generate spot: " + req.body.originURL);
-//   // generate a random number between 100 to 500 mill
-//   rand = Math.floor(Math.random() * 500000000) + 100;
-//
-//   // keep looping until the rand doesn't exist
-//   while(checkDup(rand)){
-//     rand = Math.floor(Math.random() * 500000000) + 100;
-//   }
-//
-//   ShortLinks.findOne({url: url}, (err, stuff) => {
-//     if(stuff){
-//       numberID = stuff.id;
-//       hashString = shortenIt.shorterURL.wrapIt(numberID);
-//       sameLink = url;
-//       tempNewLink = stuff.newURL;
-//       // res.redirect('/')
-//       req.sameLink = url;
-//       req.tempNewLink = stuff.newUL;
-//       return homeCtrl(req, res, next);
-//       // res.render('index', {sameLink: url, link: stuff.newURL})
-//     }
-//     else{
-//       console.log("if it doesn't exist: " + rand + " ");
-//       hashString = shortenIt.shorterURL.wrapIt(rand);
-//
-//       var shortLink = new ShortLinks({
-//         url: url,
-//         id: rand,
-//         hashString: hashString,
-//         newURL: mainURL + '/' + hashString
-//       });
-//
-//       shortLink.save((err) =>{
-//         if(err){
-//           console.log(err);
-//         }
-//         // res.send('short url: ' + shortLink.newURL);
-//         sameLink = url;
-//         tempNewlink = shortLink.newURL;
-//         req.sameLink = sameLink
-//         req.tempNewLink = tempNewLink
-//         return homeCtrl(req, res, next);
-//         // return next();
-//         // res.render('index', {sameLink: mainURL, link: link});
-//       });
-//       // res.redirect('/');
-//
-//     }
-//   });
-//   // req.sameLink =
-// }
-//
-// app.post('/generate', generateCtrl, homeCtrl);
 
 app.post('/generate', (req, res) => {
   var url = req.body.url;
@@ -201,13 +125,7 @@ app.post('/generate', (req, res) => {
         if(err){
           console.log(err);
         }
-        // res.send('short url: ' + shortLink.newURL);
-        // var sameLink2 = url;
-        // var tempNewLink2 = shortLink.newURL;
-        // app.set('sameLink', url);
-        // app.set('link', link);
-        // res.render('index', {sameLink: sameLink2, link: link2});
-        // res.redirect('/');
+
         generatedURL = mainURL + '/' + shortenIt.shorterURL.wrapIt(shortLink.id);
         res.send({'newURL': generatedURL});
 
