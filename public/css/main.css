@@ -34,8 +34,8 @@ body{
 #trimContainer{
   background-color: #fff;
   margin-top: 100px;
-  max-height: 350px;
-  max-width: 380px;
+  height: 350px;
+  width: 380px;
   /* text-align: center; */
   padding: 30px 25px 10px 25px;
   /* margin-left: 50px; */
@@ -136,3 +136,11 @@ footer{
   color: #fff !important;
 }
 /* end of footer style */
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) { }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) { }
+
+@media only screen (min-width: 480px) and (max-width: 768px) { }
+
+@media only screen and (max-width: 480px) { }
