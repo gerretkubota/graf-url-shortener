@@ -12,10 +12,6 @@ header,footer,section{
   display: block;
 }
 
-html,body{
-  /* height: 100%; */
-}
-
 body{
   background-color: #c9c9c9;
   font-family: 'SF-UI-Display-Regular';
@@ -98,7 +94,7 @@ footer{
 }
 
 @media screen and (max-width: 768px) and (min-width: 0){
-  .trimContainer{
-    margin: 0 auto;
+  #trimContainer{
+    margin: 80px auto;
   }
 }
